@@ -182,9 +182,6 @@ do
       },
     },
   }
-
-  -- lualine, the thing at the bottom of the nvim UI
-  require 'custom.plugins.lualine'
 end
 
 -- ============================================================
@@ -469,6 +466,15 @@ do
 
   -- ... and there is more!
   --  Check out: https://github.com/nvim-mini/mini.nvim
+
+  -- lualine, the thing at the bottom of the nvim UI
+  require 'custom.plugins.lualine'
+
+  -- lazygit
+  vim.pack.add { gh 'kdheepak/lazygit.nvim', gh 'nvim-lua/plenary.nvim' }
+  vim.keymap.set('n', '<leader>gG', '<cmd>LazyGit<cr>', {
+    desc = 'LazyGit',
+  })
 end
 
 -- ============================================================

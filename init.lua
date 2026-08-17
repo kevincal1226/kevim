@@ -410,6 +410,9 @@ do
   -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
   require 'custom.plugins.kanagawa-at-home'
 
+  -- transparent background, remove line if you want normal background
+  require 'custom.plugins.transparent-background'
+
   -- Highlight todo, notes, etc in comments
   vim.pack.add { gh 'folke/todo-comments.nvim' }
   require('todo-comments').setup { signs = false }

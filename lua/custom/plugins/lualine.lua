@@ -83,7 +83,7 @@ ins_left {
 
 ins_left {
   -- mode component
-  function() return '' end,
+  function() return '󰤇' end,
   color = function()
     -- auto change color according to neovims mode
     local mode_color = {

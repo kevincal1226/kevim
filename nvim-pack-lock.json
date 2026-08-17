@@ -87,6 +87,10 @@
       "rev": "2ae6958df7ced50baac5035cec0c15799eedfbf7",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
+    "ocaml.nvim": {
+      "rev": "d74934117fb7a513e64601ad1d1b53a34b00b01f",
+      "src": "https://github.com/tarides/ocaml.nvim"
+    },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"

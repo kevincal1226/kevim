@@ -703,6 +703,16 @@ do
     clangd = {},
     gopls = {},
     pyright = {},
+    ruff = {
+      cmd = { 'ruff', 'server' },
+      init_options = {
+        settings = {
+          lint = {
+            enable = true,
+          },
+        },
+      },
+    },
     rust_analyzer = {},
     --
     -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -1009,6 +1019,10 @@ do
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   -- require 'custom.plugins'
+  vim.pack.add {
+    gh 'mbbill/undotree',
+  }
+  vim.keymap.set('n', '<leader>uu', vim.cmd.UndotreeToggle)
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`

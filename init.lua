@@ -182,6 +182,9 @@ do
       },
     },
   }
+
+  -- lualine, the thing at the bottom of the nvim UI
+  require 'custom.plugins.lualine'
 end
 
 -- ============================================================

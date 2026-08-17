@@ -862,6 +862,10 @@ do
         lua = true,
         python = true,
         cpp = true,
+        ocaml = true,
+        rust = true,
+        go = true,
+        javascript = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
         return { timeout_ms = 500 }
@@ -875,12 +879,15 @@ do
     -- You can also specify external formatters in here.
     formatters_by_ft = {
       rust = { 'rustfmt' },
-      cpp = { 'clang-format' },
+      cpp = { 'clangd' },
+      ocaml = { 'ocaml.nvim' },
+      python = { 'ruff' },
+      go = { 'gofmt' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
-      -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      javascript = { 'prettierd', 'prettier', stop_after_first = true },
     },
   }
 

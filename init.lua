@@ -388,6 +388,9 @@ do
       { '<leader>t', group = '[T]oggle' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } }, -- Enable gitsigns recommended keymaps first
       { 'gr', group = 'LSP Actions', mode = { 'n' } },
+      { '<leader>u', group = '[U]ndo Actions', mode = { 'n' } },
+      { '<leader>c', group = '[C]ode Actions', mode = { 'n' } },
+      { '<leader>g', group = '[G]it Actions', mode = { 'n' } },
     },
   }
 
@@ -1088,7 +1091,7 @@ do
   vim.pack.add {
     gh 'mbbill/undotree',
   }
-  vim.keymap.set('n', '<leader>uu', vim.cmd.UndotreeToggle)
+  vim.keymap.set('n', '<leader>uu', vim.cmd.UndotreeToggle, { desc = '[U]ndo Tree' })
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`

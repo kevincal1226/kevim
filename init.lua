@@ -726,6 +726,7 @@ do
   --  See `:help lsp-config` for information about keys and how to configure
   ---@type table<string, vim.lsp.Config>
   local servers = {
+    marksman = {},
     clangd = {},
     gopls = {},
     pyright = {},
@@ -807,6 +808,7 @@ do
   local ensure_installed = vim.tbl_keys(servers or {})
   vim.list_extend(ensure_installed, {
     -- You can add other tools here that you want Mason to install
+    'markdownlint-cli2',
   })
 
   require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -1096,6 +1098,22 @@ do
   -- After first installation/clearing ~/.local/share/nvim, run:
   -- cd ~/.local/share/nvim/site/pack/core/opt/markdown-preview.nvim && npm install
   vim.pack.add { gh 'iamcco/markdown-preview.nvim' }
+
+  -- nvim-lint, linter to show diagnostics for non-LSP server plugins
+  vim.pack.add {
+    gh 'mfussenegger/nvim-lint',
+  }
+
+  local lint = require 'lint'
+
+  lint.linters_by_ft = {
+    -- markdownlint
+    markdown = { 'markdownlint-cli2' },
+  }
+
+  vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufEnter', 'InsertLeave' }, {
+    callback = function() lint.try_lint() end,
+  })
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`

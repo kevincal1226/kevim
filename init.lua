@@ -1092,6 +1092,10 @@ do
     gh 'mbbill/undotree',
   }
   vim.keymap.set('n', '<leader>uu', vim.cmd.UndotreeToggle, { desc = '[U]ndo Tree' })
+
+  -- After first installation/clearing ~/.local/share/nvim, run:
+  -- cd ~/.local/share/nvim/site/pack/core/opt/markdown-preview.nvim && npm install
+  vim.pack.add { gh 'iamcco/markdown-preview.nvim' }
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`

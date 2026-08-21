@@ -716,6 +716,9 @@ do
       --
       -- This may be unwanted, since they displace some of your code
       if client and client:supports_method('textDocument/inlayHint', event.buf) then
+        -- enabled by default
+        vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+
         map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle Inlay [H]ints')
       end
     end,
@@ -1114,6 +1117,20 @@ do
   vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufEnter', 'InsertLeave' }, {
     callback = function() lint.try_lint() end,
   })
+
+  -- flash.nvim, quick navigation
+  vim.pack.add { gh 'folke/flash.nvim' }
+  require('flash').setup()
+
+  vim.keymap.set({ 'n', 'x', 'o' }, 's', function() require('flash').jump() end)
+
+  vim.keymap.set({ 'n', 'x', 'o' }, 'S', function() require('flash').treesitter() end)
+
+  vim.keymap.set('o', 'r', function() require('flash').remote() end)
+
+  vim.keymap.set({ 'o', 'x' }, 'R', function() require('flash').treesitter_search() end)
+
+  vim.keymap.set('c', '<C-s>', function() require('flash').toggle() end)
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`

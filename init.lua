@@ -831,7 +831,7 @@ do
   vim.lsp.enable 'dafny'
 
   -- dafny syntax highlighting + indentation (no treesitter parser exists for dafny)
-  vim.pack.add { gh 'mlr-msft/vim-loves-dafny' }
+  -- vim.pack.add { gh 'mlr-msft/vim-loves-dafny' }
 
   -- ocamllsp is managed via opam, so it shouldnt be in the servers list
   vim.lsp.config('ocamllsp', {
@@ -1021,6 +1021,25 @@ do
 
   -- NOTE: You can also specify a branch or a specific commit
   vim.pack.add { { src = gh 'nvim-treesitter/nvim-treesitter', version = 'main' } }
+
+  -- nvim-treesitter ships no dafny parser, so register a third-party one.
+  -- nvim-treesitter reloads its parser table on every update, so the registration has to
+  -- live in a `User TSUpdate` autocmd or it gets wiped. The FileType autocmd below then
+  -- picks dafny up from the table and installs it on demand.
+  local function register_extra_parsers()
+    require('nvim-treesitter.parsers').dafny = {
+      install_info = {
+        url = 'https://github.com/hath995/tree-sitter-dafny',
+        branch = 'main',
+        revision = '8085572ab23ba703a1f5c1cf753136a3508c68a6',
+        queries = 'queries', -- highlights/indents/locals live in the parser repo
+      },
+      tier = 3,
+    }
+  end
+
+  vim.api.nvim_create_autocmd('User', { pattern = 'TSUpdate', callback = register_extra_parsers })
+  register_extra_parsers()
 
   -- Ensure basic parsers are installed
   local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }

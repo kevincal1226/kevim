@@ -821,6 +821,18 @@ do
     vim.lsp.enable(name)
   end
 
+  -- dafny is managed via homebrew, so it shouldnt be in the servers list
+  vim.lsp.config('dafny', {
+    cmd = { 'dafny', 'server' },
+    filetypes = { 'dafny' },
+    root_markers = { '.git' },
+  })
+
+  vim.lsp.enable 'dafny'
+
+  -- dafny syntax highlighting + indentation (no treesitter parser exists for dafny)
+  vim.pack.add { gh 'mlr-msft/vim-loves-dafny' }
+
   -- ocamllsp is managed via opam, so it shouldnt be in the servers list
   vim.lsp.config('ocamllsp', {
     cmd = { 'ocamllsp' },
@@ -875,6 +887,7 @@ do
         go = true,
         javascript = true,
         typescript = true,
+        dafny = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
         return { timeout_ms = 500 }
@@ -894,11 +907,20 @@ do
       go = { 'gofmt' },
       javascript = { 'prettier' },
       typescript = { 'prettier' },
+      dafny = { 'dafny' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
       -- javascript = { 'prettierd', 'prettier', stop_after_first = true },
+    },
+    formatters = {
+      -- `dafny format` has no working --stdin mode in 4.x, so it formats a temp file in place
+      dafny = {
+        command = 'dafny',
+        args = { 'format', '$FILENAME' },
+        stdin = false,
+      },
     },
   }
 

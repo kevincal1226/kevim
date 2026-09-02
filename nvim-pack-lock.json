@@ -131,6 +131,10 @@
       "rev": "6fa6b57cda8459e1e4b2ca34df702f55242f4e4d",
       "src": "https://github.com/mbbill/undotree"
     },
+    "vim-loves-dafny": {
+      "rev": "d75d3b074a3da2b0fa9fd5bc980f52ec82c2ad7b",
+      "src": "https://github.com/mlr-msft/vim-loves-dafny"
+    },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"

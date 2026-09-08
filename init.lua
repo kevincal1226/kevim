@@ -1031,7 +1031,6 @@ do
       install_info = {
         url = 'https://github.com/hath995/tree-sitter-dafny',
         branch = 'main',
-        revision = '8085572ab23ba703a1f5c1cf753136a3508c68a6',
         queries = 'queries', -- highlights/indents/locals live in the parser repo
       },
       tier = 3,
@@ -1172,6 +1171,16 @@ do
   vim.keymap.set({ 'o', 'x' }, 'R', function() require('flash').treesitter_search() end)
 
   vim.keymap.set('c', '<C-s>', function() require('flash').toggle() end)
+
+  vim.pack.add {
+    gh 'ErichDonGubler/lsp_lines.nvim',
+  }
+  require('lsp_lines').setup()
+  vim.diagnostic.config { virtual_lines = true }
+  -- Disable virtual_text since it's redundant due to lsp_lines.
+  vim.diagnostic.config {
+    virtual_text = false,
+  }
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`

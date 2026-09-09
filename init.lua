@@ -1181,6 +1181,39 @@ do
   vim.diagnostic.config {
     virtual_text = false,
   }
+
+  -- tabset
+  vim.pack.add {
+    gh 'FotiadisM/tabset.nvim',
+  }
+
+  require('tabset').setup {
+    defaults = {
+      tabwidth = 4,
+      expandtab = true,
+    },
+    languages = {
+      {
+        filetypes = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json', 'yaml' },
+        config = {
+          tabwidth = 2,
+        },
+      },
+      {
+        filetypes = { 'dafny' },
+        config = {
+          tabwidth = 2,
+        },
+      },
+    },
+  }
+
+  -- Guess-indent
+  vim.pack.add {
+    gh 'nmac427/guess-indent.nvim',
+  }
+
+  require('guess-indent').setup {}
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`

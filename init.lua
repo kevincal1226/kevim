@@ -991,6 +991,10 @@ do
 
     sources = {
       default = { 'lsp', 'path', 'snippets' },
+
+      per_filetype = {
+        dafny = { 'buffer', 'snippets', 'path' },
+      },
     },
 
     snippets = { preset = 'luasnip' },
@@ -1214,6 +1218,17 @@ do
   }
 
   require('guess-indent').setup {}
+
+  vim.pack.add {
+    gh 'fedepujol/bracketpair.nvim',
+  }
+
+  -- vim.pack.add {
+  --   gh 'HiPhish/rainbow-delimiters.nvim',
+  -- }
+
+  -- local vimrc = vim.fn.stdpath 'config' .. '/vimrc.vim'
+  -- vim.cmd.source(vimrc)
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`

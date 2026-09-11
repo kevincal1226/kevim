@@ -10,6 +10,10 @@
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
+    "bracketpair.nvim": {
+      "rev": "805b233f4fc1a36706e6fbc7259a244777677a53",
+      "src": "https://github.com/fedepujol/bracketpair.nvim"
+    },
     "conform.nvim": {
       "rev": "016802de402556da54c36bd7359b441266b01cdd",
       "src": "https://github.com/stevearc/conform.nvim"

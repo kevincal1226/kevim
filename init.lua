@@ -1219,9 +1219,9 @@ do
 
   require('guess-indent').setup {}
 
-  vim.pack.add {
-    gh 'fedepujol/bracketpair.nvim',
-  }
+  -- vim.pack.add {
+  --   gh 'fedepujol/bracketpair.nvim',
+  -- }
 
   -- vim.pack.add {
   --   gh 'HiPhish/rainbow-delimiters.nvim',

@@ -18,6 +18,10 @@
       "rev": "016802de402556da54c36bd7359b441266b01cdd",
       "src": "https://github.com/stevearc/conform.nvim"
     },
+    "coq_nvim": {
+      "rev": "a0689fdab9ad5a46bc8730c96a43f215d605f23c",
+      "src": "https://github.com/ms-jpq/coq_nvim"
+    },
     "fidget.nvim": {
       "rev": "6f793b2bcd2d35e201c09520f698bb763220908a",
       "src": "https://github.com/j-hui/fidget.nvim"
@@ -114,6 +118,10 @@
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "rainbow": {
+      "rev": "76ca1a20aa42edb5c65c19029968aad4625790dc",
+      "src": "https://github.com/luochen1990/rainbow"
     },
     "tabset.nvim": {
       "rev": "996f95e4105d053a163437e19a40bd2ea10abeb2",

@@ -22,6 +22,10 @@
       "rev": "a0689fdab9ad5a46bc8730c96a43f215d605f23c",
       "src": "https://github.com/ms-jpq/coq_nvim"
     },
+    "dafny-verify.nvim": {
+      "rev": "b5cd8213c264186b035db5a047169f23607f86e1",
+      "src": "https://github.com/kevincal1226/dafny-verify.nvim"
+    },
     "fidget.nvim": {
       "rev": "6f793b2bcd2d35e201c09520f698bb763220908a",
       "src": "https://github.com/j-hui/fidget.nvim"

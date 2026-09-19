@@ -822,13 +822,19 @@ do
   end
 
   -- dafny is managed via homebrew, so it shouldnt be in the servers list
+  -- --notify-line-verification-status makes the server send the per-line
+  -- verification status that dafny-verify.nvim draws as a gutter bar
   vim.lsp.config('dafny', {
-    cmd = { 'dafny', 'server' },
+    cmd = { 'dafny', 'server', '--notify-line-verification-status' },
     filetypes = { 'dafny' },
     root_markers = { '.git' },
   })
 
   vim.lsp.enable 'dafny'
+
+  -- verification gutter icons for dafny, like the vs code extension
+  vim.pack.add { gh 'kevincal1226/dafny-verify.nvim' }
+  require('dafny-verify').setup()
 
   -- dafny syntax highlighting + indentation (no treesitter parser exists for dafny)
   -- vim.pack.add { gh 'mlr-msft/vim-loves-dafny' }

@@ -367,14 +367,42 @@ do
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   vim.pack.add { gh 'lewis6991/gitsigns.nvim' }
   require('gitsigns').setup {
-    signs = {
-      add = { text = '' }, ---@diagnostic disable-line: missing-fields
-      change = { text = '' }, ---@diagnostic disable-line: missing-fields
-      delete = { text = '' }, ---@diagnostic disable-line: missing-fields
-      topdelete = { text = '' }, ---@diagnostic disable-line: missing-fields
-      changedelete = { text = '' }, ---@diagnostic disable-line: missing-fields
-    },
+    signcolumn = false,
+    numhl = true,
+    signs_staged_enable = false,
+    -- signs = {
+    --   add = { text = '' }, ---@diagnostic disable-line: missing-fields
+    --   change = { text = '' }, ---@diagnostic disable-line: missing-fields
+    --   delete = { text = '' }, ---@diagnostic disable-line: missing-fields
+    --   topdelete = { text = '' }, ---@diagnostic disable-line: missing-fields
+    --   changedelete = { text = '' }, ---@diagnostic disable-line: missing-fields
+    -- },
   }
+
+  -- -- Draw gitsigns' signs on the right side of the line number column.
+  -- -- All other signs (diagnostics, marks, ...) stay on the left side.
+  -- -- Returns the highest priority sign placed on the drawn line, formatted for 'statuscolumn'.
+  -- ---@param want_git boolean pick gitsigns' signs when true, every other sign when false
+  -- ---@return string
+  -- local function sign_column(want_git)
+  --   if vim.v.virtnum ~= 0 then return '  ' end
+  --   local lnum = vim.v.lnum
+  --   local marks = vim.api.nvim_buf_get_extmarks(0, -1, { lnum - 1, 0 }, { lnum - 1, -1 }, { type = 'sign', details = true })
+  --   local sign, priority = nil, -1
+  --   for _, mark in ipairs(marks) do
+  --     local details = mark[4]
+  --     local is_git = (details.sign_hl_group or ''):find '^GitSigns' ~= nil
+  --     if details.sign_text and is_git == want_git and (details.priority or 0) > priority then
+  --       sign, priority = details, details.priority or 0
+  --     end
+  --   end
+  --   if not sign then return '  ' end
+  --   return '%#' .. (sign.sign_hl_group or 'SignColumn') .. '#' .. sign.sign_text .. '%*'
+  -- end
+  --
+  -- function _G.gitsigns_statuscolumn(kind) return sign_column(kind == 'git') end
+  --
+  -- vim.o.statuscolumn = '%{%v:lua.gitsigns_statuscolumn("other")%}%=%l %{%v:lua.gitsigns_statuscolumn("git")%}'
 
   -- Useful plugin to show you pending keybinds.
   vim.pack.add { gh 'folke/which-key.nvim' }

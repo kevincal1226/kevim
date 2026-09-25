@@ -936,7 +936,7 @@ do
     formatters_by_ft = {
       rust = { 'rustfmt' },
       cpp = { 'clangd' },
-      ocaml = { 'ocaml.nvim' },
+      ocaml = { 'ocamlformat' },
       python = { 'ruff' },
       go = { 'gofmt' },
       javascript = { 'prettier' },
